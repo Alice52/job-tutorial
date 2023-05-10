@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+quartz:
+  datasource:
+    url: ENC(0jw3ueuyZd+gAv+scPJC9MRjJiWxo1O2etxt+yuvptORdCNjGWJ7dgJ7AcgT+CPu0iDjFJVnz7krPfgKdMQh+h+fqoDRnYje/EOCs7ULvgcvwW7wGJfFnq5rK3ouNW3UdYW+zp+7nl1sf23VusD3U49BRDdybFT++jdIxrWuCv1CLAHl/8dhkKVb+Re+uLq6DNWa3cg0rVwbSL3MEwoHOA==)
+    username: ENC(uVs7DP260FXOKYBacQjLo7Fonyyiq2qwnSjOGt9Q2weCl3ceVf6c6VAAQ6WkTsUt)
+    password: ENC(IkxnRsO4O+J/8pOvHoL7/9sSyvhq3Zv9AYObJx9ldt636qyRiBTGrwndtSISEY4F)
+    driverClassName: com.mysql.cj.jdbc.Driver
+
+spring:
+  profiles:
+    include: common
+  application:
+    name: cart-service-job
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      # when config initialize-schema: always, it will drop tables and re-create when server start-up
+      initialize-schema: never
+      comment-prefix: '#'
+    properties:
+      org.quartz.jobStore.isClustered: true
+      org.quartz.scheduler.instanceId: SERVICE-1
+      org.quartz.scheduler.instanceName: ${spring.application.name}

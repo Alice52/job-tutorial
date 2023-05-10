@@ -1,0 +1,24 @@
+jasypt:
+  encryptor:
+    password: ${JASYPT_ENCRYPTOR_PASSWORD}
+
+swagger2:
+  enable: true
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:/mapper/**/*.xml
+  type-aliases-package: cn.edu.ntu.javaee.springboot.quartz.sample.model.entity
+  global-config:
+    db-config:
+      id-type: auto
+
+logging:
+  level:
+    cn.edu.*: debug
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+

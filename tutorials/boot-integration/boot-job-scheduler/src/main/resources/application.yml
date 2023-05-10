@@ -1,0 +1,11 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: boot-job-scheduler
+  task:
+    scheduling:
+      thread-name-prefix: Job-Thread-
+      pool:
+        size: 20

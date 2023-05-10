@@ -1,0 +1,55 @@
+# NOTICE: if using this config to run server, please comment QuartzConfiguration#@Configuration
+
+server:
+  port: 8080
+
+spring:
+  profiles:
+    include: common
+  application:
+    name: boot-job-quartz
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      # when config initialize-schema: always, it will drop tables and re-create when server start-up
+      initialize-schema: always
+      comment-prefix: '#'
+    properties:
+      org.quartz.scheduler.instanceId: AUTO
+      org.quartz.threadPool.threadCount: 500
+  #---------------- this is using main database. -------------##
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: ENC(sVzpLgY8KAy5WUZbqsb+O7Ybvu9eddnJtLaEuo8QVWMyIL6DpOcnYQAYMEQ9SXCFQrbKUNmBn2ZeHIcTe+iuXVghVQjW7ASiygEQnMMXVG5zHpHzl3iz/w4028RUXcoc5ng8dvUPzBPfN0BXkVVQzdn5b5DluPawm0oIzAkWxxWRmHp5zZvD8tRhr+8pO+CegcZOI0nj6Io9iAgcICE67g==)
+      username: ENC(uVs7DP260FXOKYBacQjLo7Fonyyiq2qwnSjOGt9Q2weCl3ceVf6c6VAAQ6WkTsUt)
+      password: ENC(IkxnRsO4O+J/8pOvHoL7/9sSyvhq3Zv9AYObJx9ldt636qyRiBTGrwndtSISEY4F)
+      initial-size: 10
+      minIdle: 50
+      maxActive: 500
+      maxWait: 60000
+      fail-fast: true
+      Keep-alive: true
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: false
+      filters: stat,wall,slf4j
+      maxPoolPreparedStatementPerConnectionSize: 100
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        enabled: true
+        #访问路径为/druid时，跳转到StatViewServlet  http://127.0.0.1:8080/druid
+        url-pattern: "/druid/*"
+        reset-enable: falseEcException
+        login-username: ENC(1j3TT4M6aHscVzKpeHWX5KNKRU7ui1jesPGY52W2FEl9WunVIBiVizoeQv4ocWxd)
+        login-password: ENC(Jm9wTCpswKDpVkuiT0JmwMiz7H4bqiOLnEK1Hs49QPrB+RJ4Y8pUh2ON4FPOSjNV)

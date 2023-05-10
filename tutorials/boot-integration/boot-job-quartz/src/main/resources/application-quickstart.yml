@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    include: common
+  application:
+    name: boot-job-quartz-sample
+  datasource:
+    url: ENC(AoaqntVABm1UyE6T94YJL5KiA+mmteL2WCCVXEu17LtazQns2LU9I7aea92Wv3uvGvK9jJIVkHjw902val+gPydSz3U/7GPlqV5IgUFDGBXJLZ5I6iL2QG0ge1YLjV3PjbyuSoeY5mgxqTJSxvhj121OfOJ43xCPsKqlyD2Hy6ZCktf9+GYjDtqB7YVfbEJuy6tYV5xYZirZog+04j/Aew==)
+    username: ENC(uVs7DP260FXOKYBacQjLo7Fonyyiq2qwnSjOGt9Q2weCl3ceVf6c6VAAQ6WkTsUt)
+    password: ENC(IkxnRsO4O+J/8pOvHoL7/9sSyvhq3Zv9AYObJx9ldt636qyRiBTGrwndtSISEY4F)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      connection-test-query: SELECT 1 FROM DUAL
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: SpringBootDemoHikariCP
+      max-lifetime: 60000
+      connection-timeout: 30000
+
+boot:
+  quartz:
+    cron:
+      simple-job-corn: 1/10 * * * * ? *
